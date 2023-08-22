@@ -14,7 +14,7 @@
               </p>
             </div>
             <div class="answer">
-              <img class="user" :src="getAssetUrl(item.avatar)" alt="" />
+              <img class="user" :src="avatar" alt="" />
               <div class="text">
                 {{ item.answer }}
               </div>
@@ -59,10 +59,9 @@ import closeImg from '@/assets/close.png';
 import userImg from '@/assets/user.png';
 import zanImg from '@/assets/zan.png';
 import redImg from '@/assets/zan-red.png';
- 
+import avatar from '@/assets/avatar.png';
+
 import yellowImg from '@/assets/zan-yellow.png';
- 
- 
 
 const textarea = ref<string>('');
 const isShow = ref<boolean>(true);
@@ -94,7 +93,7 @@ function handleSearch() {
     id: dataList.value.length,
     good: false,
     bad: false,
-    avatar: '../assets/avatar.png',
+
     answer: '查询中...',
     question: val,
   });
@@ -110,7 +109,7 @@ function handleSearch() {
       id: dataList.value.length,
       good: false,
       bad: false,
-      avatar: '../assets/avatar.png',
+
       answer: response.data.data,
       question: val,
     });
@@ -143,7 +142,7 @@ interface ObjType {
   id: number;
   good: boolean;
   bad: boolean;
-  avatar: string;
+  avatar?: string;
   answer: string;
   question: string;
 }
