@@ -46,7 +46,6 @@
           rows="3"
           v-model="textarea"
           class="textarea"
-          name="contactus"
           @keyup.enter.native="handleSearch"
         ></textarea>
       </div>
@@ -60,8 +59,10 @@ import closeImg from '@/assets/close.png';
 import userImg from '@/assets/user.png';
 import zanImg from '@/assets/zan.png';
 import redImg from '@/assets/zan-red.png';
-import greenImg from '@/assets/zan-green.png';
+ 
 import yellowImg from '@/assets/zan-yellow.png';
+ 
+ 
 
 const textarea = ref<string>('');
 const isShow = ref<boolean>(true);
@@ -158,15 +159,11 @@ function handleStatus(item: ObjType, isLike: number) {
       answer: item.answer,
       isLike,
     },
-  })
-    .then((response: any) => {
-      if (response.data.code == 200) {
-        item[type] = !item[type];
-      }
-    })
-    .error((error: any) => {
-      console.log(error.msg);
-    });
+  }).then((response: any) => {
+    if (response.data.code == 200) {
+      item[type] = !item[type];
+    }
+  });
 }
 </script>
 
@@ -185,7 +182,8 @@ function handleStatus(item: ObjType, isLike: number) {
     transform: translateX(-50%);
     width: 627px;
     min-height: 327px;
-    background: url('@/assets/bg.png') repeat;
+    background: url('../assets/bg.png') repeat;
+    // background: url(var(--bgImg)) repeat;
     background-size: 100% 100%;
   }
   .top-bg {
@@ -193,7 +191,7 @@ function handleStatus(item: ObjType, isLike: number) {
     height: 82px;
     padding-top: 10px;
     box-sizing: border-box;
-    background: url('@/assets/top-bg.png') repeat;
+    background: url('../assets/top-bg.png') repeat;
     background-size: 100% 100%;
     font-size: 28px;
     font-weight: bold;
@@ -219,7 +217,7 @@ function handleStatus(item: ObjType, isLike: number) {
     width: calc(100% - 24px);
     height: 56px;
     line-height: 56px;
-    background: url('@/assets/input-bg.png') repeat;
+    background: url('../assets/input-bg.png') repeat;
     background-size: 100% 100%;
     P {
       cursor: pointer;
@@ -239,13 +237,16 @@ function handleStatus(item: ObjType, isLike: number) {
       z-index: 9;
       display: inline-block;
       width: 100%;
-      min-height: 50px;
+      max-height: 56px;
       padding: 12px;
       box-sizing: border-box;
       border: none !important;
       border-radius: 5px;
       background-color: transparent;
       resize: none;
+    }
+    textarea:focus {
+      outline: none;
     }
   }
 
@@ -273,7 +274,7 @@ function handleStatus(item: ObjType, isLike: number) {
       height: auto;
       padding: 12px 24px;
       box-sizing: border-box;
-      background: url('@/assets/question.png') repeat;
+      background: url('../assets/question.png') repeat;
       background-size: 100% 100%;
       font-size: 12px;
       font-weight: bold;
@@ -295,7 +296,7 @@ function handleStatus(item: ObjType, isLike: number) {
       height: auto;
       padding: 12px 24px;
       box-sizing: border-box;
-      background: url('@/assets/answer.png') repeat;
+      background: url('../assets/answer.png') repeat;
       background-size: 100% 100%;
 
       font-size: 12px;
