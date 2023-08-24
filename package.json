@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check build-only",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
+    "dev": "vite -m alpha",
+    "build:alpha": "vite build -m alpha",
+    "build:beta": "vite build -m beta",
+    "build:stable": "vite build -m stable",
+    "preview:alpha": "pnpm build:alpha && vite preview -m alpha",
+    "preview:beta": "pnpm build:beta && vite preview -m beta",
+    "preview:stable": "pnpm build:stable && vite preview -m stable",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "build:check": "run-p type-check build-only",
+    "build-only": "vite build"
   },
   "dependencies": {
     "axios": "^1.4.0",

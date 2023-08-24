@@ -6,6 +6,8 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig(({ mode, command }) => {
   return {
     base: './',
+    envDir: './environments',
+    envPrefix: '__',
     plugins: [vue()],
     resolve: {
       alias: {
@@ -16,13 +18,13 @@ export default defineConfig(({ mode, command }) => {
       https: false,
       host: true,
       port: 5173,
-      proxy: {
-        '/api': {
-          target: 'http://10.1.75.208:8081/ai/api',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
-        }
-      }
+      // proxy: {
+      //   '/api': {
+      //     target: 'http://10.1.75.208:8081/ai/api',
+      //     changeOrigin: true,
+      //     rewrite: path => path.replace(/^\/api/, '')
+      //   }
+      // }
     },
     css: {
       preprocessorOptions: {
