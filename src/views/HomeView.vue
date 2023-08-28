@@ -40,7 +40,7 @@
 
       <div class="input-box">
         <img class="user-avatar" :src="userImg" alt="" />
-        <p class="send" @click.native="handleSearch">发送</p>
+        <p class="send" @click.native="handleSearch">Send</p>
         <!--    <img
           class="send"
           :src="sendImg"
@@ -57,6 +57,7 @@
           v-model="textarea"
           ref="refInput"
           class="textarea"
+          maxlength="500"
           @keyup.enter="handleSearch"
         ></textarea>
       </div>
@@ -294,8 +295,8 @@ function uuidFn(len?: number, radix?: number) {
       font-weight: bold;
       letter-spacing: 1px;
       color: transparent;
-      -webkit-text-stroke: 1px #150834;
-      text-stroke: 1px #150834;
+      -webkit-text-stroke: 0.5px #150834;
+      text-stroke: 0.5px #150834;
       -webkit-text-fill-color: #ffffff;
       text-fill-color: #ffffff;
     }
@@ -310,7 +311,7 @@ function uuidFn(len?: number, radix?: number) {
   }
 
   .input-box {
-    $padding: 6px;
+    $padding: 12px;
     position: absolute;
     box-sizing: border-box;
     bottom: $padding;
@@ -376,7 +377,7 @@ function uuidFn(len?: number, radix?: number) {
     width: 80%;
     height: 230px;
     box-sizing: border-box;
-    // padding: 6px;
+    padding: 0 12px;
     padding-bottom: 65px;
     overflow-y: auto;
   }
@@ -388,7 +389,7 @@ function uuidFn(len?: number, radix?: number) {
     cursor: default;
     padding: 12px 24px;
     p {
-      text-align: right;
+      text-align: left;
       word-wrap: break-word;
       max-width: 304px;
       height: auto;
@@ -406,7 +407,6 @@ function uuidFn(len?: number, radix?: number) {
     display: flex;
     justify-content: start;
     align-items: center;
-    max-width: 304px;
     .user {
       width: 54px;
       height: 35px;
@@ -415,6 +415,7 @@ function uuidFn(len?: number, radix?: number) {
       max-width: 304px;
       height: auto;
       padding: 12px 24px;
+      margin-left: 8px;
       box-sizing: border-box;
       background: url('../assets/answer.png') repeat;
       background-size: 100% 100%;
